@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tbmkagit - Matbaa Malzemeleri</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;color:#333;background:#fff}
+:root{--p:#5f5f5f;--w:#fff}
+nav{position:fixed;top:0;width:100%;background:rgba(95,95,95,0.97);backdrop-filter:blur(8px);z-index:999;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#fff;font-weight:900;font-size:1.4rem;letter-spacing:1px}
+.logo span{color:#ccc;font-size:.8rem;display:block;font-weight:400}
+.nav-links a{color:#ddd;text-decoration:none;margin-left:1.5rem;font-size:.9rem;transition:.3s}
+.nav-links a:hover{color:#fff}
+.hero{min-height:100vh;background:linear-gradient(135deg,#5f5f5f 0%,#3a3a3a 60%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.hero-content{color:#fff;animation:fadeUp .8s ease both}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:1rem;line-height:1.2}
+.hero p{font-size:clamp(1rem,2.5vw,1.4rem);color:#ccc;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+.btn{background:#fff;color:#5f5f5f;padding:.9rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;display:inline-block;transition:.3s;border:2px solid #fff}
+.btn:hover{background:transparent;color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+h2{font-size:2rem;font-weight:900;text-align:center;margin-bottom:.5rem}
+.sub{text-align:center;color:#888;margin-bottom:3rem}
+.features{background:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.card{background:#f9f9f9;border-radius:16px;padding:2rem;text-align:center;transition:.3s;border:2px solid transparent}
+.card:hover{border-color:#5f5f5f;transform:translateY(-5px);box-shadow:0 10px 30px rgba(95,95,95,.15)}
+.card .icon{font-size:3rem;margin-bottom:1rem}
+.card h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#333}
+.card p{color:#666;font-size:.95rem;line-height:1.6}
+.about{background:#5f5f5f;color:#fff}
+.about h2{color:#fff}
+.about .sub{color:#ccc}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-text p{line-height:1.8;color:#ddd;margin-bottom:1rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.stat{background:rgba(255,255,255,.1);border-radius:12px;padding:1.5rem;text-align:center}
+.stat .num{font-size:2.5rem;font-weight:900;color:#fff}
+.stat .lbl{color:#ccc;font-size:.85rem}
+.products{background:#f5f5f5}
+.product-card{border-radius:16px;padding:2rem;color:#fff;position:relative;overflow:hidden;transition:.3s}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.2)}
+.product-card.c1{background:linear-gradient(135deg,#5f5f5f,#3a3a3a)}
+.product-card.c2{background:linear-gradient(135deg,#7a7a7a,#4a4a4a)}
+.product-card.c3{background:linear-gradient(135deg,#9a9a9a,#5f5f5f)}
+.product-card .p-icon{font-size:2.5rem;margin-bottom:1rem}
+.product-card h3{font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.product-card p{color:rgba(255,255,255,.8);font-size:.9rem;line-height:1.6}
+.testimonials{background:#fff}
+.testi-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.testi{background:#f9f9f9;border-radius:16px;padding:2rem;border-left:4px solid #5f5f5f}
+.testi p{color:#555;font-style:italic;line-height:1.7;margin-bottom:1rem}
+.testi strong{color:#333;font-size:.9rem}
+.faq{background:#5f5f5f;color:#fff}
+.faq h2{color:#fff}
+.faq .sub{color:#ccc}
+.faq-items{max-width:800px;margin:0 auto;display:grid;gap:1rem}
+.faq-item{background:rgba(255,255,255,.1);border-radius:12px;padding:1.5rem}
+.faq-item h4{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:#fff}
+.faq-item p{color:#ccc;font-size:.9rem;line-height:1.6}
+.contact{background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-info h3{font-size:1.3rem;font-weight:700;margin-bottom:1rem;color:#333}
+.contact-info p{color:#666;line-height:1.8;margin-bottom:.5rem}
+form{display:grid;gap:1rem}
+input,textarea{width:100%;padding:.9rem 1rem;border:2px solid #eee;border-radius:8px;font-family:'Inter',sans-serif;font-size:.95rem;transition:.3s;outline:none}
+input:focus,textarea:focus{border-color:#5f5f5f}
+textarea{height:140px;resize:vertical}
+.btn-dark{background:#5f5f5f;color:#fff;padding:.9rem 2rem;border:none;border-radius:8px;font-weight:700;cursor:pointer;width:100%;font-size:1rem;transition:.3s}
+.btn-dark:hover{background:#3a3a3a}
+footer{background:#1a1a1a;color:#aaa;text-align:center;padding:2rem}
+footer .fl{color:#fff;font-weight:700;font-size:1.2rem;margin-bottom:.5rem}
+footer p{font-size:.85rem}
+@media(max-width:768px){.about-grid,.contact-grid{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Tbmkagit<span>Matbaa Malzemeleri & Kağıtçılık</span></div>
+  <div class="nav-links">
+    <a href="#features">Özellikler</a>
+    <a href="#about">Hakkımızda</a>
+    <a href="#products">Ürünler</a>
+    <a href="#contact">İletişim</a>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>Tbmkagit<br>Matbaa Malzemeleri</h1>
+    <p>Kaliteli spiral kağıt ve matbaa malzemeleri ile işinizi bir adım öteye taşıyın.</p>
+    <a href="#products" class="btn">Ürünlerimizi Keşfedin</a>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <h2>Neden Tbmkagit?</h2>
+    <p class="sub">Müşterilerimize en iyi hizmeti sunmak için çalışıyoruz.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🏆</div>
+        <h3>Kalite Kontrolü</h3>
+        <p>Her ürünümüz titizlikle test edilir ve en yüksek kalite standartlarına göre üretilir.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>Geniş Ürün Yelpazesi</h3>
+        <p>Her ihtiyaca uygun matbaa malzemeleri ve kağıt ürünleri geniş seçenek yelpazesiyle.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🚚</div>
+        <h3>Hızlı Teslimat</h3>
+        <p>Siparişleriniz en kısa sürede kapınıza gelir. Güvenilir lojistik ağımızla hizmetinizdeyiz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <h2>Hakkımızda</h2>
+    <p class="sub">Sektörde güvenilir bir isim</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Tbmkagit, matbaa malzemeleri ve kağıtçılık alanında uzmanlaşmış köklü bir firmadır. Müşterilerimize en kaliteli ürünleri en uygun fiyatlarla sunmak için çalışıyoruz.</p>
+        <p>Spiral kağıttan ofset baskı malzemelerine, karton ürünlerden özel kesim kağıtlara kadar geniş bir ürün yelpazesi sunmaktayız.</p>
+        <p>Deneyimli ekibimiz ve modern altyapımızla sektörün öncüsü olmaya devam ediyoruz.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><div class="num">15+</div><div class="lbl">Yıllık Deneyim</div></div>
+        <div class="stat"><div class="num">500+</div><div class="lbl">Mutlu Müşteri</div></div>
+        <div class="stat"><div class="num">200+</div><div class="lbl">Ürün Çeşidi</div></div>
+        <div class="stat"><div class="num">%99</div><div class="lbl">Memnuniyet</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <h2>Ürünlerimiz</h2>
+    <p class="sub">En çok tercih edilen ürün kategorilerimiz</p>
+    <div class="cards">
+      <div class="product-card c1">
+        <div class="p-icon">🌀</div>
+        <h3>Spiral Kağıt</h3>
+        <p>A4, A5 ve özel boyutlarda yüksek kaliteli spiral kağıt ürünleri. Okul ve ofis kullanımına uygun.</p>
+      </div>
+      <div class="product-card c2">
+        <div class="p-icon">🖨️</div>
+        <h3>Matbaa Malzemeleri</h3>
+        <p>Ofset baskı mürekkepleri, baskı plakaları ve diğer tüm matbaa ekipmanları.</p>
+      </div>
+      <div class="product-card c3">
+        <div class="p-icon">📄</div>
+        <h3>Özel Kağıt Ürünleri</h3>
+        <p>Karton, kuşe, bristol ve özel gramajlı kağıt seçenekleriyle ihtiyacınıza özel çözümler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2>Müşteri Yorumları</h2>
+    <p class="sub">Müşterilerimiz ne diyor?</p>
+    <div class="testi-cards">
+      <div class="testi">
+        <p>"Tbmkagit ile çalışmak gerçekten bir zevk. Ürün kalitesi mükemmel, teslimat hızlı ve müşteri hizmetleri çok ilgili."</p>
+        <strong>— Ahmet Y., Matbaa Sahibi</strong>
+      </div>
+      <div class="testi">
+        <p>"Spiral kağıt siparişlerimizi yıllardır buradan veriyoruz. Fiyat/kalite dengesi mükemmel, kesinlikle tavsiye ederim."</p>
+        <strong>— Fatma K., Okul Müdürü</strong>
+      </div>
+      <div class="testi">
+        <p>"Geniş ürün yelpazesi sayesinde tüm matbaa ihtiyaçlarımı tek yerden karşılayabiliyorum. Çok memnunum."</p>
+        <strong>— Mehmet D., Tasarımcı</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>Sık Sorulan Sorular</h2>
+    <p class="sub">Merak ettikleriniz için buradayız</p>
+    <div class="faq-items">
+      <div class="faq-item">
+        <h4>Minimum sipariş miktarı nedir?</h4>
+        <p>Ürün tipine göre minimum sipariş miktarımız değişmektedir. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Kargo süreci nasıl işler?</h4>
+        <p>Siparişleriniz onaylandıktan sonra 1-3 iş günü içinde kargoya verilmektedir. Türkiye geneline hızlı teslimat sağlamaktayız.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Özel boyut ve gramaj talepleri kabul ediliyor mu?</h4>
+        <p>Evet, özel ölçü ve gramaj taleplerinizi değerlendiriyoruz. Toplu siparişlerde özel üretim imkânı sunulmaktadır.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Kurumsal fatura kesilebiliyor mu?</h4>
+        <p>Tüm siparişleriniz için e-fatura veya kağıt fatura düzenlenebilmektedir. KDV dahil fiyatlandırma yapılmaktadır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>İletişim</h2>
+    <p class="sub">Sorularınız için bize ulaşın</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Bize Ulaşın</h3>
+        <p>📍 İstanbul, Türkiye</p>
+        <p>📞 +90 212 000 00 00</p>
+        <p>✉️ info@tbmkagit.com</p>
+        <p>🕐 Hafta içi 09:00 - 18:00</p>
+        <br>
+        <p style="color:#5f5f5f;font-weight:600">Tbmkagit olarak her türlü soru ve siparişiniz için buradayız. Uzman ekibimiz size en kısa sürede dönüş yapacaktır.</p>
+      </div>
+      <form id="contactForm">
+        <input type="text" placeholder="Adınız Soyadınız" required>
+        <input type="email" placeholder="E-posta Adresiniz" required>
+        <input type="text" placeholder="Konu">
+        <textarea placeholder="Mesajınız..."></textarea>
+        <button type="submit" class="btn-dark">Mesaj Gönder</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">Tbmkagit</div>
+  <p>Matbaa Malzemeleri & Spiral Kağıt</p>
+  <p style="margin-top:.5rem">© 2024 Tbmkagit. Tüm hakları saklıdır.</p>
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('button');
+  btn.textContent='Gönderildi ✓';
+  btn.style.background='#2d8a4e';
+  setTimeout(()=>{btn.textContent='Mesaj Gönder';btn.style.background='#5f5f5f';this.reset();},3000);
+});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){en.target.style.opacity='1';en.target.style.transform='translateY(0)';}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.card,.product-card,.testi,.faq-item,.stat').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .5s ease, transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>"}]
